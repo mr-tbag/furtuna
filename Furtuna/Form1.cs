@@ -30,5 +30,15 @@ namespace Furtuna
             _game.Update(0.1f);
             _game.Render(g);
         }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        {
+            _game.Click(e.X, e.Y);
+        }
     }
 }

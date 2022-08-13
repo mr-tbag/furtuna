@@ -8,7 +8,8 @@
         public Game()
         {
             Tanks.Add(new Tank(100, 500, 100, 60, 3, 29, 90));
-            Tanks.Add(new Tank(100, 700, 100, 50, 5, 29, 50));
+            Tanks.Add(new Tank(100, 700, 100, 50,10, 29, 50));
+            Tanks.Add(new Tank(100, 900, 100, 50,5, 29, 80));
         }
 
         public void Update(float deltaSeconds)
@@ -31,7 +32,17 @@
 
         public void Click(int x, int y)
         {
-
+            foreach (var tank in Tanks.ToList())
+            {
+                if(x > tank.X && x < tank.X + tank.Length && y > tank.Y && y < tank.Y + tank.Width)
+                {
+                    tank.Hp = tank.Hp - 1;
+                    if (tank.Hp == 0)
+                    {
+                        Tanks.Remove(tank);
+                    }
+                }
+            }
         }
     }
     public class Tank
@@ -69,7 +80,6 @@
         public Base(int x)
         {
             X = x;
-            
         }
     }
 
